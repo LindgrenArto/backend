@@ -39,14 +39,14 @@ namespace WebApiExample.Controllers
         [HttpPost]
         public ActionResult<Person> Create([FromBody] Person person)
         {
-            Person createdPerson = _personService.CreatePerson(person);
+            var createdPerson = _personService.CreatePerson(person);
             return new JsonResult(person);
         }
 
         [HttpPut("{id}")]
-        public ActionResult<Person> Update(int id ,[FromBody]  Person person)
+        public IActionResult Update(int id , Person person)
         {
-            Person updatedPerson = _personService.Update(id, person);
+            var updatedPerson = _personService.Update(id, person);
             return new JsonResult(updatedPerson);
         }
 

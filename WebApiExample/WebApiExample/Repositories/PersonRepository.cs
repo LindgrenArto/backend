@@ -25,8 +25,8 @@ namespace WebApiExample.Repositories
 
         public void Delete(int id)
         {
-            var contact = Read(id);
-            _context.Remove(contact);
+            var person = Read(id);
+            _context.Remove(person);
             _context.SaveChanges();
             return;
 
@@ -34,7 +34,9 @@ namespace WebApiExample.Repositories
 
         public List<Person> Read()
         {
-            return _context.Person.AsNoTracking().ToList();
+            return _context.Person.AsNoTracking()
+                .Include(p => p.Phone)
+                .ToList();
         }
 
         public Person Read(int id)
@@ -44,8 +46,7 @@ namespace WebApiExample.Repositories
 
         public Person Update(int id, Person person)
         {
-            var updated = Read(id);
-            _context.Update(updated);
+            _context.Update(person);
             _context.SaveChanges();
             return person;
         }

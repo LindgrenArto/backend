@@ -45,7 +45,7 @@ namespace WebApiExample.Services
             }
             else
             {
-               return _personRepository.Update(id, savedPerson);
+               return _personRepository.Update(id, person);
             }
         }
     }

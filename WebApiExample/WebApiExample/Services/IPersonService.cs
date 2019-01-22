@@ -6,7 +6,7 @@ using WebApiExample.Models;
 
 namespace WebApiExample.Services
 {
-   public  interface IPersonService
+   public interface IPersonService
     {
         Person CreatePerson(Person person);
         List<Person> Read();

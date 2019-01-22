@@ -35,6 +35,10 @@ namespace WebApiExample
                 options.UseSqlServer(Configuration.GetConnectionString("LocalPersonDb"));
             }
             );
+
+            services.AddMvc().AddJsonOptions(json =>
+            json.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
