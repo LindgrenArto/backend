@@ -22,8 +22,8 @@ namespace WebApiExample.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
- // To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-     //           optionsBuilder.UseSqlServer("Data Source=LAPTOP-K3DT06D7\\SQLEXPRESS;Initial Catalog=PersonDB;Integrated Security=True");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Data Source=LAPTOP-K3DT06D7\\SQLEXPRESS;Initial Catalog=PersonDB;Integrated Security=True");
             }
         }
 
@@ -34,6 +34,8 @@ namespace WebApiExample.Models
             modelBuilder.Entity<Person>(entity =>
             {
                 entity.Property(e => e.Name).IsUnicode(false);
+
+                entity.Property(e => e.Password).IsUnicode(false);
             });
 
             modelBuilder.Entity<Phone>(entity =>
